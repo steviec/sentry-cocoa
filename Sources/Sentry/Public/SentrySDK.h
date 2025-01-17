@@ -353,6 +353,16 @@ SENTRY_NO_INIT
  */
 + (void)close;
 
+/**
+ * Disables the ObjC binary image cache at runtime, which can reduce memory usage
+ * (especially in resource-constrained environments).
+ *
+ * You must call this after [SentrySDK startWithOptions:].
+ * Once disabled, you won't have the additional in-process image info that the
+ * ObjC cache provides (only the crash-time C-level cache remains).
+ */
++ (void)disableBinaryImageCache;
+
 #if SENTRY_TARGET_PROFILING_SUPPORTED
 /**
  * Start a new continuous profiling session if one is not already running.

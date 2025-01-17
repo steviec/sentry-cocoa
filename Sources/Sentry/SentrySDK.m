@@ -581,6 +581,16 @@ static NSDate *_Nullable startTimestamp = nil;
     SENTRY_LOG_DEBUG(@"SDK closed!");
 }
 
+/**
+  * Disables the ObjC binary image cache at runtime, which can reduce memory usage
+ * (especially in resource-constrained environments).
+ */
++ (void)disableBinaryImageCache
+{
+    [SentryDependencyContainer.sharedInstance.binaryImageCache stop];
+    SENTRY_LOG_DEBUG(@"ObjC binary image cache stopped.");
+}
+
 #ifndef __clang_analyzer__
 // Code not to be analyzed
 + (void)crash
