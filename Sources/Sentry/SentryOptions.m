@@ -198,12 +198,8 @@ NSString *const kSentryDefaultEnvironment = @"production";
                     infoDict[@"CFBundleShortVersionString"], infoDict[@"CFBundleVersion"]];
         }
 
-        NSRegularExpression *everythingAllowedRegex =
-            [NSRegularExpression regularExpressionWithPattern:@".*"
-                                                      options:NSRegularExpressionCaseInsensitive
-                                                        error:NULL];
-        self.tracePropagationTargets = @[ everythingAllowedRegex ];
-        self.failedRequestTargets = @[ everythingAllowedRegex ];
+        self.tracePropagationTargets = @[ ];
+        self.failedRequestTargets = @[ ];
 
         // defaults to 500 to 599
         SentryHttpStatusCodeRange *defaultHttpStatusCodeRange =
